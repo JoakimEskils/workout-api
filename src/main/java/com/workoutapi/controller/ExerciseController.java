@@ -19,11 +19,11 @@ public class ExerciseController {
     public Iterable<Exercise> getExercises() {
         return exerciseRepository.findAll();
     }
-    @GetMapping(value = "/ride/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/exercise/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Exercise getExercise(@PathVariable long id){
         return exerciseRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Invalid exercise id %s", id)));
     }
-    @PostMapping(value = "/ride", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/exercise", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Exercise createExercise(@Valid @RequestBody Exercise exercise) {
         return exerciseRepository.save(exercise);
     }
