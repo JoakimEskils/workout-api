@@ -1,0 +1,30 @@
+package com.workoutapi.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+@Entity
+@Getter
+@ToString
+@NoArgsConstructor
+public class Exercise {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    @NotEmpty
+    private String name;
+    @NotEmpty
+    private String description;
+    private int difficultyFactor;
+
+    public Exercise(String name, String description, int difficultyFactor) {
+        this.name = name;
+        this.description = description;
+        this.difficultyFactor = difficultyFactor;
+    }
+}
